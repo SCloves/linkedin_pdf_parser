@@ -7,7 +7,7 @@ from pdfminer.pdfpage import PDFPage
 from xablauniano import Xablauniano
 
 from cStringIO import StringIO
-import os
+import os, re
 
 
 
@@ -38,4 +38,14 @@ def convert_pdf_to_txt(path):
     device.close()
     str = retstr.getvalue()
     retstr.close()
+    str = remove_page(str)
     return str
+
+def remove_page(texto):
+    regex = re.compile('\Page \d')
+    match = regex.findall(texto)
+
+    for i in match:
+        texto = texto.replace(i, '')
+
+    return texto
