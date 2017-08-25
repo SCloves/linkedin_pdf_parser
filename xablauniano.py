@@ -8,7 +8,7 @@ class Xablauniano():
         self.profession = lista[1]
         self.summary = ''.join(lista[lista.index('Summary') +1: lista.index('Experience')])
         self.experience = parse_experience(lista[lista.index('Experience') +1: lista.index('Education')])
-        self.education = lista[lista.index('Education') +1]
+        self.education = lista[lista.index('Education') + 1 : ]
     
 
 
